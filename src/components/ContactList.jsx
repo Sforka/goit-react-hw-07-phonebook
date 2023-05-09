@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeContacts } from 'redux/contactsSlice';
+import { removeContact } from 'service/contactData';
 
 export const ContactList = () => {
   const filterValue = useSelector(state => state.filter.value);
@@ -19,7 +19,7 @@ export const ContactList = () => {
             {contact.name}: {contact.number}
             <button
               type="button"
-              onClick={()=> dispatch(removeContacts(contact.id))}
+              onClick={()=> dispatch(removeContact(contact.id))}
             >
               Delete
             </button>
