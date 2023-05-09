@@ -17,7 +17,7 @@ import {
      [fetchContact.pending]: state => {
        state.isLoading = true;
      },
-     [fetchContact.fulfilled](state, { payload }) {
+     [fetchContact.fulfilled](state, payload) {
        state.contact = payload;
        state.isLoading = false;
        state.error = null;
@@ -45,7 +45,7 @@ import {
        state.isLoading = true;
      },
      [addContact.fulfilled](state, { payload }) {
-       state.contact = [...state.items, payload];
+       state.contact = [...state.contact, payload];
        state.isLoading = false;
        state.error = null;
      },
@@ -53,6 +53,7 @@ import {
        state.isLoading = false;
        state.error = action;
      },
-   },
+     
+   }
  });
 export const contactsReducer = contactsSlice.reducer;

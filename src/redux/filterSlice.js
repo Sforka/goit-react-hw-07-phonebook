@@ -11,5 +11,3 @@ export const filterSlice = createSlice({
 });
 
 export const { update } = filterSlice.actions;
-
-console.log(update('cat'));

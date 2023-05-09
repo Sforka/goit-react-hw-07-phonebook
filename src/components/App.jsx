@@ -5,15 +5,16 @@ import { ContactList } from './ContactList';
 import { ContactForm } from './ContactForm';
 
 export function App() {
+  
   return (
     <div>
+
       <Section title="Phonebook">
-        <ContactForm onSubmit />
+        <ContactForm/>
       </Section>
       <Section title="Contacts">
         <Filter />
-        <ContactList
-        />
+        <ContactList />
       </Section>
     </div>
   );
