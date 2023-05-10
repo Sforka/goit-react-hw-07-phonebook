@@ -3,13 +3,14 @@ import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeContact } from 'service/contactData';
 import {
+  selectFilteredContacts,
   selectContacts,
 } from '../redux/selectors';
 import { useEffect } from 'react';
 import { fetchContact } from 'service/contactData';
 
 export const ContactList = () => {
-  
+  const filterValue = useSelector(selectFilteredContacts);
   const contacts = useSelector(selectContacts)
   const dispatch = useDispatch();
 
@@ -20,19 +21,19 @@ export const ContactList = () => {
   console.log(contacts);
 
 
-  // const filterContactsList = contacts.filter(contact => {
-  //   console.log(contact)
-  //   return contact.name.toLowerCase().includes(filterValue);
-  // });
+  const filterContactsList = contacts.filter(contact => {
+    console.log(contact)
+    return contact.name.toLowerCase().includes(filterValue);
+  });
   return (
     <div>
       <ul>
-        {contacts.map(contact => (
+        {filterContactsList.map(contact => (
           <li key={nanoid()}>
             {contact.name}: {contact.number}
             <button
               type="button"
-              onClick={() => dispatch(removeContact(contact.id))}
+              onClick={()=> dispatch(removeContact(contact.id))}
             >
               Delete
             </button>

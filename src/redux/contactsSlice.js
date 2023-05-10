@@ -7,7 +7,6 @@ import {
 
 import { toast } from 'react-toastify';
 
-
 const STATUS = {
   PENDING: 'pending',
   FULFILLED: 'fulfilled',
@@ -78,13 +77,13 @@ const contactsSlice = createSlice({
 
   extraReducers: builder => {
     const { REJECTED, FULFILLED, PENDING } = STATUS;
-    builder
-      .addCase(fetchContact.fulfilled, handleFulfilledFetchAll)
-      .addCase(addContact.fulfilled, handleFulfilledAdd)
-      .addCase(removeContact.fulfilled, handleFulfilledDelete)
-      .addMatcher(isAnyOf(getActions(FULFILLED)), handleFulfilled)
-      .addMatcher(isAnyOf(getActions(PENDING)), handlePending)
-      .addMatcher(isAnyOf(getActions(REJECTED)), handleRejected);
+
+    builder.addCase(fetchContact.fulfilled, handleFulfilledFetchAll);
+    builder.addCase(addContact.fulfilled, handleFulfilledAdd);
+    builder.addCase(removeContact.fulfilled, handleFulfilledDelete);
+    builder.addMatcher(isAnyOf(getActions(FULFILLED)), handleFulfilled);
+    builder.addMatcher(isAnyOf(getActions(PENDING)), handlePending);
+    builder.addMatcher(isAnyOf(getActions(REJECTED)), handleRejected);
   },
 });
 
